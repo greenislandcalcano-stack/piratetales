@@ -1,62 +1,53 @@
 :root{
-  --bg: #0b1220;
-  --ink: #111318;
-  --parchment: #f2ead7;
-  --parchment2:#e7dcc3;
-  --muted:#6b7280;
-  --gold:#c9a55a;
+  /* Beach / Pirate palette */
+  --ink: #102a43;            /* deep readable navy text */
+  --muted: #52606d;
+
+  --sand: #f3e4c8;
+  --sand2: #e8d0a2;
+
+  --sea: #0b8ea8;
+  --sea2: #055a6b;
+
+  --sky: #dff3ff;
+  --sky2: #7bc7ff;
+
+  --gold: #b8892f;           /* treasure-gold */
+  --gold2:#e1c06b;
+
+  --card: rgba(255, 255, 255, 0.62);   /* “parchment glass” */
+  --card2: rgba(245, 232, 205, 0.70);
 
   --radius: 18px;
   --max: 980px;
 }
 
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
+html, body { margin:0; padding:0; }
+
 body{
   font-family: ui-serif, "EB Garamond", "Garamond", Georgia, serif;
-  background: radial-gradient(1200px 600px at 50% -10%, #18233e 0%, var(--bg) 60%);
-  color: #e9edf7;
-  line-height: 1.6;
-}
+  color: var(--ink);
+  line-height: 1.65;
 
-a{color: #d7c08b; text-decoration: none}
-a:hover{text-decoration: underline}
+  /* BEACH SCENE: sun glow + sky/sea/sand horizon + sand texture */
+  background:
+    radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.0) 60%),
+    linear-gradient(to bottom,
+      var(--sky) 0%,
+      var(--sky2) 38%,
+      #c8f0ff 45%,
+      var(--sea) 52%,
+      var(--sea2) 66%,
+      var(--sand) 66%,
+      var(--sand2) 100%
+    ),
+    repeating-linear-gradient(115deg,
+      rgba(255,255,255,0.20) 0 2px,
+      rgba(0,0,0,0.03) 2px 7px
+    );
 
-.container{max-width: var(--max); margin:0 auto; padding: 28px 18px}
-.site-header{
-  padding: 18px 0 10px;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.brand{
-  display:flex; align-items:baseline; gap:14px; justify-content:space-between;
-}
-.brand-title{
-  font-size: 20px; letter-spacing: .08em; text-transform: uppercase;
-}
-.nav a{margin-left:14px; font-size: 14px; opacity:.9}
-.hero{
-  padding: 56px 0 28px;
-}
-.hero h1{
-  font-size: 54px; line-height: 1.05; margin:0 0 10px;
-}
-.hero p{max-width: 720px; font-size: 18px; opacity:.92}
-.btn-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-.btn{
-  display:inline-block;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.18);
-  background: rgba(255,255,255,.06);
-  backdrop-filter: blur(10px);
-}
-.btn.primary{
-  border-color: rgba(201,165,90,.55);
-  background: linear-gradient(180deg, rgba(201,165,90,.28), rgba(201,165,90,.12));
-}
-.section{
-  padding: 26px 0;
-  border-top: 1px solid rgba(255,255,255,.08);
+  background-attachment: fixed;
+  background-blend-mode: screen, normal, multiply;
 }
 
  /* Artifact Layout */
