@@ -101,3 +101,238 @@ body{
   opacity:.75;
   font-size: 13px;
 }
+/* =========================================================
+   PIRATE TALES — Medieval Spanish / Pirate Animation Pack
+   Paste below your existing CSS
+   ========================================================= */
+
+/* Optional: classy medieval + pirate-feel fonts (safe to remove if you dislike @import) */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root{
+  --title-font: "Cinzel Decorative", "Cinzel", ui-serif, Georgia, serif;
+  --body-font: "Cormorant Garamond", ui-serif, "EB Garamond", Georgia, serif;
+
+  --shadow-ink: rgba(16, 42, 67, .18);
+  --glow-gold: rgba(225, 192, 107, .35);
+  --mist: rgba(255,255,255,.35);
+  --rope: rgba(43, 27, 0, .35);
+}
+
+body{
+  font-family: var(--body-font);
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Medieval Spanish vibe: headings, ornaments, caps --- */
+h1, h2, h3, .site-title{
+  font-family: var(--title-font);
+  letter-spacing: .06em;
+  text-transform: none;
+  color: var(--ink);
+  text-shadow: 0 1px 0 rgba(255,255,255,.35);
+}
+
+h1{
+  font-size: clamp(2.3rem, 4.2vw, 4.0rem);
+  line-height: 1.05;
+}
+
+h2{
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  line-height: 1.15;
+  position: relative;
+  padding-bottom: .35rem;
+}
+
+/* Ornament underline for section headings */
+h2::after{
+  content: "";
+  display: block;
+  margin-top: .45rem;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: .85;
+}
+
+/* Wider caption / “old print” feel */
+.caption, .tagline, .lead, .kicker{
+  font-variant: small-caps;
+  letter-spacing: .14em;        /* wider caption */
+  word-spacing: .08em;
+  font-size: 0.98rem;
+  color: var(--muted);
+}
+
+/* Add a subtle “antique ink” feel to paragraphs */
+p{
+  font-size: 1.12rem;
+  letter-spacing: .01em;
+}
+
+/* --- Parchment panel styling --- */
+.parchment, main, section{
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(16,42,67,0.10);
+  box-shadow: 0 18px 50px rgba(16,42,67,0.10);
+  background: var(--card2);
+}
+
+/* Parchment texture overlay (pure CSS) */
+.parchment::before,
+main::before,
+section::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background:
+    radial-gradient(1200px 700px at 15% 10%, rgba(255,255,255,.65), transparent 55%),
+    radial-gradient(1000px 600px at 80% 30%, rgba(0,0,0,.06), transparent 60%),
+    repeating-linear-gradient(120deg, rgba(0,0,0,.03) 0 2px, rgba(255,255,255,.06) 2px 6px);
+  mix-blend-mode: multiply;
+}
+
+/* “Gold glow” edge for premium pirate feel */
+.parchment::after,
+main::after,
+section::after{
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(184,137,47,.28), 0 0 40px var(--glow-gold);
+  opacity: .30;
+}
+
+/* --- Pirate background animations (subtle, classy) --- */
+
+/* A gentle moving “sun shimmer” across the page */
+body::before{
+  content:"";
+  position: fixed;
+  inset: -30%;
+  pointer-events: none;
+  opacity: .30;
+  background:
+    radial-gradient(700px 420px at 20% 12%, rgba(255,255,255,.85), transparent 55%),
+    radial-gradient(900px 520px at 75% 18%, rgba(225,192,107,.55), transparent 60%);
+  filter: blur(2px);
+  animation: sun-drift 14s ease-in-out infinite;
+}
+
+/* Mist drifting near the horizon */
+body::after{
+  content:"";
+  position: fixed;
+  left: -20%;
+  right: -20%;
+  top: 42%;
+  height: 28vh;
+  pointer-events: none;
+  opacity: .22;
+  background:
+    radial-gradient(60% 90% at 15% 60%, var(--mist), transparent 65%),
+    radial-gradient(60% 90% at 55% 35%, var(--mist), transparent 65%),
+    radial-gradient(60% 90% at 85% 55%, var(--mist), transparent 65%);
+  filter: blur(10px);
+  animation: mist-drift 18s linear infinite;
+}
+
+/* Make hero feel like a ship gently swaying (apply class to hero wrapper) */
+.ship-sway{
+  transform-origin: 50% 20%;
+  animation: ship-sway 7.5s ease-in-out infinite;
+}
+
+/* Water shimmer bar (apply class to any divider element) */
+.sea-shimmer{
+  position: relative;
+}
+.sea-shimmer::after{
+  content:"";
+  position: absolute;
+  inset: -6px 0;
+  pointer-events: none;
+  opacity: .22;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+  transform: translateX(-60%);
+  animation: shimmer 4.5s ease-in-out infinite;
+}
+
+/* Rope divider (use <div class="rope-divider"></div>) */
+.rope-divider{
+  height: 10px;
+  border-radius: 999px;
+  background:
+    repeating-linear-gradient(45deg, rgba(43,27,0,.28) 0 6px, rgba(255,255,255,.18) 6px 12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 8px 18px rgba(16,42,67,.12);
+  opacity: .9;
+}
+
+/* Buttons: treasure-gold + subtle flicker */
+.btn, button, .cta{
+  position: relative;
+  border-radius: 999px;
+  border: 1px solid rgba(16,42,67,0.18);
+  background: linear-gradient(180deg, var(--gold2), var(--gold));
+  color: #2b1b00;
+  font-weight: 800;
+  letter-spacing: .05em;
+  box-shadow: 0 10px 28px rgba(184,137,47,0.25);
+  transition: transform .15s ease, filter .15s ease;
+}
+.btn:hover, button:hover, .cta:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+.btn::after, button::after, .cta::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  pointer-events:none;
+  box-shadow: 0 0 30px rgba(225,192,107,.35);
+  opacity:.0;
+  animation: gold-flicker 6s ease-in-out infinite;
+}
+
+/* --- Keyframes --- */
+@keyframes sun-drift{
+  0%,100%{ transform: translate3d(-1.2%, -0.8%, 0) scale(1.02); }
+  50%{ transform: translate3d(1.6%, 1.1%, 0) scale(1.03); }
+}
+
+@keyframes mist-drift{
+  0%{ transform: translateX(-6%); }
+  100%{ transform: translateX(6%); }
+}
+
+@keyframes ship-sway{
+  0%,100%{ transform: rotate(-.35deg) translateY(0px); }
+  50%{ transform: rotate(.35deg) translateY(-2px); }
+}
+
+@keyframes shimmer{
+  0%,100%{ transform: translateX(-60%); opacity:.10; }
+  50%{ transform: translateX(60%); opacity:.28; }
+}
+
+@keyframes gold-flicker{
+  0%, 40%, 100% { opacity: .06; }
+  45% { opacity: .22; }
+  55% { opacity: .10; }
+  70% { opacity: .18; }
+}
+
+/* Respect accessibility */
+@media (prefers-reduced-motion: reduce){
+  body::before, body::after, .ship-sway, .sea-shimmer::after, .btn::after, button::after, .cta::after{
+    animation: none !important;
+  }
+}
