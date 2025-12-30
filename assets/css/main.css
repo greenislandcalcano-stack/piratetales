@@ -278,3 +278,23 @@ body::after{
 @media (max-width:900px){
   .begin-cards{ grid-template-columns:1fr; }
 }
+/* =========================================================
+   PAGE TITLES — Make them Monumental
+   ========================================================= */
+
+/* Main page title (first h1 on content pages) */
+main > h1,
+.page h1,
+.world h1 {
+  font-size: clamp(3.2rem, 6vw, 5.2rem);
+  line-height: 1.02;
+  margin-bottom: 18px;
+  letter-spacing: .08em;
+}
+
+/* Extra gravitas for “world” level pages */
+.world h1,
+.world-title {
+  text-transform: uppercase;
+  font-weight: 800;
+}
