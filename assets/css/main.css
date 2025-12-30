@@ -1,6 +1,13 @@
+/* =========================================================
+   FONTS (must be first)
+   ========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* =========================================================
+   ROOT VARIABLES — Pirate / Beach Palette
+   ========================================================= */
 :root{
-  /* Beach / Pirate palette */
-  --ink: #102a43;            /* deep readable navy text */
+  --ink: #102a43;
   --muted: #52606d;
 
   --sand: #f3e4c8;
@@ -12,26 +19,37 @@
   --sky: #dff3ff;
   --sky2: #7bc7ff;
 
-  --gold: #b8892f;           /* treasure-gold */
-  --gold2:#e1c06b;
+  --gold: #b8892f;
+  --gold2: #e1c06b;
 
-  --card: rgba(255, 255, 255, 0.62);   /* “parchment glass” */
-  --card2: rgba(245, 232, 205, 0.70);
+  --card: rgba(255,255,255,0.62);
+  --card2: rgba(245,232,205,0.70);
 
   --radius: 18px;
   --max: 980px;
+
+  --title-font: "Cinzel Decorative","Cinzel",ui-serif,Georgia,serif;
+  --body-font: "Cormorant Garamond","EB Garamond",Georgia,serif;
+
+  --glow-gold: rgba(225,192,107,0.35);
+  --mist: rgba(255,255,255,0.35);
 }
 
-html, body { margin:0; padding:0; }
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
 
 body{
-  font-family: ui-serif, "EB Garamond", "Garamond", Georgia, serif;
+  font-family: var(--body-font);
   color: var(--ink);
   line-height: 1.65;
+  text-rendering: geometricPrecision;
+  -webkit-font-smoothing: antialiased;
 
-  /* BEACH SCENE: sun glow + sky/sea/sand horizon + sand texture */
   background:
-    radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.0) 60%),
+    radial-gradient(900px 500px at 20% 10%, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0) 60%),
     linear-gradient(to bottom,
       var(--sky) 0%,
       var(--sky2) 38%,
@@ -41,155 +59,81 @@ body{
       var(--sand) 66%,
       var(--sand2) 100%
     ),
-    repeating-linear-gradient(115deg,
+    repeating-linear-gradient(
+      115deg,
       rgba(255,255,255,0.20) 0 2px,
       rgba(0,0,0,0.03) 2px 7px
     );
 
   background-attachment: fixed;
-  background-blend-mode: screen, normal, multiply;
+  background-blend-mode: screen,normal,multiply;
 }
 
- /* Artifact Layout */
-.artifact-wrap{
-  background: linear-gradient(180deg, var(--parchment), var(--parchment2));
-  color: var(--ink);
-  border-radius: var(--radius);
-  padding: 34px 22px;
-  box-shadow: 0 22px 60px rgba(0,0,0,.35);
-  position: relative;
-  overflow:hidden;
-}
-.artifact-wrap:before{
-  content:"";
-  position:absolute; inset:0;
-  background:
-    radial-gradient(700px 260px at 20% 0%, rgba(0,0,0,.06), transparent 55%),
-    radial-gradient(650px 280px at 100% 30%, rgba(0,0,0,.05), transparent 60%);
-  pointer-events:none;
-}
-.artifact-label{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  text-transform: uppercase;
-  letter-spacing: .18em;
-  font-size: 12px;
-  opacity:.72;
-  margin-bottom: 10px;
-}
-.artifact-wrap h1{
-  font-size: 34px;
-  margin: 0 0 10px;
-}
-.artifact-body{
-  font-size: 18px;
-}
-.artifact-actions{
-  margin-top: 22px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
-.small-note{
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  font-size: 12px;
-  opacity:.7;
-  margin-top:10px;
-}
-
-.site-footer{
-  padding: 28px 0;
-  opacity:.75;
-  font-size: 13px;
-}
 /* =========================================================
-   PIRATE TALES — Medieval Spanish / Pirate Animation Pack
-   Paste below your existing CSS
+   TYPOGRAPHY
    ========================================================= */
-
-/* Optional: classy medieval + pirate-feel fonts (safe to remove if you dislike @import) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
-
-:root{
-  --title-font: "Cinzel Decorative", "Cinzel", ui-serif, Georgia, serif;
-  --body-font: "Cormorant Garamond", ui-serif, "EB Garamond", Georgia, serif;
-
-  --shadow-ink: rgba(16, 42, 67, .18);
-  --glow-gold: rgba(225, 192, 107, .35);
-  --mist: rgba(255,255,255,.35);
-  --rope: rgba(43, 27, 0, .35);
-}
-
-body{
-  font-family: var(--body-font);
-  text-rendering: geometricPrecision;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* --- Medieval Spanish vibe: headings, ornaments, caps --- */
-h1, h2, h3, .site-title{
+h1,h2,h3,.site-title{
   font-family: var(--title-font);
   letter-spacing: .06em;
-  text-transform: none;
-  color: var(--ink);
   text-shadow: 0 1px 0 rgba(255,255,255,.35);
 }
 
 h1{
-  font-size: clamp(2.3rem, 4.2vw, 4.0rem);
+  font-size: clamp(2.3rem,4.2vw,4rem);
   line-height: 1.05;
 }
 
 h2{
-  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-size: clamp(1.6rem,2.6vw,2.2rem);
   line-height: 1.15;
-  position: relative;
   padding-bottom: .35rem;
 }
 
-/* Ornament underline for section headings */
 h2::after{
-  content: "";
-  display: block;
-  margin-top: .45rem;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: .85;
+  content:"";
+  display:block;
+  margin-top:.45rem;
+  height:2px;
+  background: linear-gradient(90deg,transparent,var(--gold),transparent);
 }
 
-/* Wider caption / “old print” feel */
-.caption, .tagline, .lead, .kicker{
-  font-variant: small-caps;
-  letter-spacing: .14em;        /* wider caption */
-  word-spacing: .08em;
-  font-size: 0.98rem;
-  color: var(--muted);
-}
-
-/* Add a subtle “antique ink” feel to paragraphs */
 p{
   font-size: 1.12rem;
   letter-spacing: .01em;
 }
 
-/* --- Parchment panel styling --- */
-.parchment, main, section{
+.caption,.tagline,.lead{
+  font-variant: small-caps;
+  letter-spacing: .14em;
+  color: var(--muted);
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 28px 18px;
+}
+
+.parchment,main,section{
   position: relative;
   overflow: hidden;
   border-radius: var(--radius);
+  background: var(--card2);
   border: 1px solid rgba(16,42,67,0.10);
   box-shadow: 0 18px 50px rgba(16,42,67,0.10);
-  background: var(--card2);
 }
 
-/* Parchment texture overlay (pure CSS) */
 .parchment::before,
 main::before,
 section::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  opacity: .22;
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.22;
   background:
     radial-gradient(1200px 700px at 15% 10%, rgba(255,255,255,.65), transparent 55%),
     radial-gradient(1000px 600px at 80% 30%, rgba(0,0,0,.06), transparent 60%),
@@ -197,28 +141,49 @@ section::before{
   mix-blend-mode: multiply;
 }
 
-/* “Gold glow” edge for premium pirate feel */
 .parchment::after,
 main::after,
 section::after{
-  content: "";
-  position: absolute;
-  inset: -2px;
-  pointer-events: none;
+  content:"";
+  position:absolute;
+  inset:-2px;
   border-radius: inherit;
+  pointer-events:none;
   box-shadow: inset 0 0 0 1px rgba(184,137,47,.28), 0 0 40px var(--glow-gold);
-  opacity: .30;
+  opacity:.30;
 }
 
-/* --- Pirate background animations (subtle, classy) --- */
+/* =========================================================
+   BUTTONS & LINKS
+   ========================================================= */
+a{ color: var(--ink); text-decoration:none; }
 
-/* A gentle moving “sun shimmer” across the page */
+.btn,.cta,button{
+  border-radius:999px;
+  padding:12px 18px;
+  border:1px solid rgba(16,42,67,0.18);
+  background: linear-gradient(180deg,var(--gold2),var(--gold));
+  color:#2b1b00;
+  font-weight:800;
+  letter-spacing:.05em;
+  box-shadow:0 10px 28px rgba(184,137,47,0.25);
+  transition: transform .15s ease, filter .15s ease;
+}
+
+.btn:hover,.cta:hover,button:hover{
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+}
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
 body::before{
   content:"";
-  position: fixed;
-  inset: -30%;
-  pointer-events: none;
-  opacity: .30;
+  position:fixed;
+  inset:-30%;
+  pointer-events:none;
+  opacity:.30;
   background:
     radial-gradient(700px 420px at 20% 12%, rgba(255,255,255,.85), transparent 55%),
     radial-gradient(900px 520px at 75% 18%, rgba(225,192,107,.55), transparent 60%);
@@ -226,16 +191,15 @@ body::before{
   animation: sun-drift 14s ease-in-out infinite;
 }
 
-/* Mist drifting near the horizon */
 body::after{
   content:"";
-  position: fixed;
-  left: -20%;
-  right: -20%;
-  top: 42%;
-  height: 28vh;
-  pointer-events: none;
-  opacity: .22;
+  position:fixed;
+  left:-20%;
+  right:-20%;
+  top:42%;
+  height:28vh;
+  pointer-events:none;
+  opacity:.22;
   background:
     radial-gradient(60% 90% at 15% 60%, var(--mist), transparent 65%),
     radial-gradient(60% 90% at 55% 35%, var(--mist), transparent 65%),
@@ -244,188 +208,73 @@ body::after{
   animation: mist-drift 18s linear infinite;
 }
 
-/* Make hero feel like a ship gently swaying (apply class to hero wrapper) */
 .ship-sway{
-  transform-origin: 50% 20%;
+  transform-origin:50% 20%;
   animation: ship-sway 7.5s ease-in-out infinite;
 }
 
-/* Water shimmer bar (apply class to any divider element) */
-.sea-shimmer{
-  position: relative;
-}
-.sea-shimmer::after{
-  content:"";
-  position: absolute;
-  inset: -6px 0;
-  pointer-events: none;
-  opacity: .22;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
-  transform: translateX(-60%);
-  animation: shimmer 4.5s ease-in-out infinite;
-}
-
-/* Rope divider (use <div class="rope-divider"></div>) */
-.rope-divider{
-  height: 10px;
-  border-radius: 999px;
-  background:
-    repeating-linear-gradient(45deg, rgba(43,27,0,.28) 0 6px, rgba(255,255,255,.18) 6px 12px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 8px 18px rgba(16,42,67,.12);
-  opacity: .9;
-}
-
-/* Buttons: treasure-gold + subtle flicker */
-.btn, button, .cta{
-  position: relative;
-  border-radius: 999px;
-  border: 1px solid rgba(16,42,67,0.18);
-  background: linear-gradient(180deg, var(--gold2), var(--gold));
-  color: #2b1b00;
-  font-weight: 800;
-  letter-spacing: .05em;
-  box-shadow: 0 10px 28px rgba(184,137,47,0.25);
-  transition: transform .15s ease, filter .15s ease;
-}
-.btn:hover, button:hover, .cta:hover{
-  transform: translateY(-1px);
-  filter: brightness(1.02);
-}
-.btn::after, button::after, .cta::after{
-  content:"";
-  position:absolute;
-  inset:-2px;
-  border-radius:inherit;
-  pointer-events:none;
-  box-shadow: 0 0 30px rgba(225,192,107,.35);
-  opacity:.0;
-  animation: gold-flicker 6s ease-in-out infinite;
-}
-
-/* --- Keyframes --- */
 @keyframes sun-drift{
-  0%,100%{ transform: translate3d(-1.2%, -0.8%, 0) scale(1.02); }
-  50%{ transform: translate3d(1.6%, 1.1%, 0) scale(1.03); }
+  0%,100%{ transform: translate(-1.2%,-0.8%) scale(1.02); }
+  50%{ transform: translate(1.6%,1.1%) scale(1.03); }
 }
-
 @keyframes mist-drift{
-  0%{ transform: translateX(-6%); }
-  100%{ transform: translateX(6%); }
+  from{ transform: translateX(-6%); }
+  to{ transform: translateX(6%); }
 }
-
 @keyframes ship-sway{
-  0%,100%{ transform: rotate(-.35deg) translateY(0px); }
-  50%{ transform: rotate(.35deg) translateY(-2px); }
+  0%,100%{ transform: rotate(-.35deg); }
+  50%{ transform: rotate(.35deg); }
 }
 
-@keyframes shimmer{
-  0%,100%{ transform: translateX(-60%); opacity:.10; }
-  50%{ transform: translateX(60%); opacity:.28; }
-}
-
-@keyframes gold-flicker{
-  0%, 40%, 100% { opacity: .06; }
-  45% { opacity: .22; }
-  55% { opacity: .10; }
-  70% { opacity: .18; }
-}
-
-/* Respect accessibility */
-@media (prefers-reduced-motion: reduce){
-  body::before, body::after, .ship-sway, .sea-shimmer::after, .btn::after, button::after, .cta::after{
-    animation: none !important;
-  }
-}
 /* =========================================================
-   BEGIN PAGE — Cinematic Intro (scoped)
+   BEGIN PAGE — CINEMATIC INTRO
    ========================================================= */
-
-.begin-page{
-  padding: 12px 0 30px;
-}
+.begin-page{ padding:12px 0 30px; }
 
 .begin-hero{
-  padding: 34px 28px;
-  margin: 18px 0 22px;
-}
-
-.begin-ornament{
-  opacity: .85;
-  margin-bottom: 10px;
-}
-
-.begin-title{
-  margin: 8px 0 10px;
-  letter-spacing: .05em;
+  padding:34px 28px;
+  margin:18px 0 22px;
 }
 
 .begin-sub{
-  font-size: 1.25rem;
-  line-height: 1.45;
-  color: var(--muted);
-  margin: 0 0 16px;
-}
-
-.begin-body{
-  font-size: 1.15rem;
-  margin: 18px 0 18px;
+  font-size:1.25rem;
+  color:var(--muted);
 }
 
 .begin-cta{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 16px 0 16px;
-}
-
-.begin-cta .alt{
-  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(245,232,205,.75));
-  color: var(--ink);
-  box-shadow: 0 10px 28px rgba(16,42,67,0.10);
-}
-
-.begin-whisper{
-  margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid rgba(16,42,67,0.12);
-  color: var(--muted);
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin:16px 0;
 }
 
 .begin-cards{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:14px;
 }
 
 .begin-card{
-  padding: 18px 18px 16px;
-}
-
-.begin-card h3{
-  margin: 8px 0 8px;
-  font-family: var(--title-font, ui-serif);
-  letter-spacing: .03em;
-}
-
-.begin-card p{
-  margin: 0 0 10px;
-  color: var(--muted);
+  padding:18px;
 }
 
 .begin-link{
-  font-weight: 800;
-  letter-spacing: .05em;
-  text-decoration: none;
-  color: var(--ink);
-  + border-bottom: 1px solid rgba(184,137,47,0.55);
+  font-weight:800;
+  letter-spacing:.05em;
+  border-bottom:1px solid rgba(184,137,47,0.55);
 }
 
 .begin-link:hover{
-  + border-bottom-color: rgba(184,137,47,0.95);
+  border-bottom-color: rgba(184,137,47,0.95);
 }
 
-/* Responsive */
-@media (max-width: 900px){
-  .begin-cards{ grid-template-columns: 1fr; }
-  .begin-hero{ padding: 26px 18px; }
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  *{ animation:none !important; }
+}
+
+@media (max-width:900px){
+  .begin-cards{ grid-template-columns:1fr; }
 }
