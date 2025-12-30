@@ -336,3 +336,96 @@ body::after{
     animation: none !important;
   }
 }
+/* =========================================================
+   BEGIN PAGE — Cinematic Intro (scoped)
+   ========================================================= */
+
+.begin-page{
+  padding: 12px 0 30px;
+}
+
+.begin-hero{
+  padding: 34px 28px;
+  margin: 18px 0 22px;
+}
+
+.begin-ornament{
+  opacity: .85;
+  margin-bottom: 10px;
+}
+
+.begin-title{
+  margin: 8px 0 10px;
+  letter-spacing: .05em;
+}
+
+.begin-sub{
+  font-size: 1.25rem;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.begin-body{
+  font-size: 1.15rem;
+  margin: 18px 0 18px;
+}
+
+.begin-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 16px 0 16px;
+}
+
+.begin-cta .alt{
+  background: linear-gradient(180deg, rgba(255,255,255,.75), rgba(245,232,205,.75));
+  color: var(--ink);
+  box-shadow: 0 10px 28px rgba(16,42,67,0.10);
+}
+
+.begin-whisper{
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(16,42,67,0.12);
+  color: var(--muted);
+}
+
+.begin-cards{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.begin-card{
+  padding: 18px 18px 16px;
+}
+
+.begin-card h3{
+  margin: 8px 0 8px;
+  font-family: var(--title-font, ui-serif);
+  letter-spacing: .03em;
+}
+
+.begin-card p{
+  margin: 0 0 10px;
+  color: var(--muted);
+}
+
+.begin-link{
+  font-weight: 800;
+  letter-spacing: .05em;
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid rgba(184,137,47,.55);
+}
+
+.begin-link:hover{
+  border-bottom-color: rgba(184,137,47,.95);
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .begin-cards{ grid-template-columns: 1fr; }
+  .begin-hero{ padding: 26px 18px; }
+}
