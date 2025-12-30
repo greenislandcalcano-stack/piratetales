@@ -417,11 +417,11 @@ body::after{
   letter-spacing: .05em;
   text-decoration: none;
   color: var(--ink);
-  border-bottom: 1px solid rgba(184,137,47,.55);
+  + border-bottom: 1px solid rgba(184,137,47,0.55);
 }
 
 .begin-link:hover{
-  border-bottom-color: rgba(184,137,47,.95);
+  + border-bottom-color: rgba(184,137,47,0.95);
 }
 
 /* Responsive */
